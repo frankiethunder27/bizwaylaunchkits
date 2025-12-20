@@ -10,7 +10,7 @@ export function ContentToConversion() {
 
   const handleGenerate = async () => {
     if (!topic.trim()) {
-      alert('Enter what you're promoting');
+      alert('Enter what you are promoting');
       return;
     }
 

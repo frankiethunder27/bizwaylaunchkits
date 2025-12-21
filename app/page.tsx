@@ -1,77 +1,37 @@
-'use client';
-
-import { useState } from 'react';
-import { KitNav } from '@/components/KitNav';
-import { AmplifAI } from '@/components/kits/AmplifAI';
-import { OneShot } from '@/components/kits/OneShot';
-import { ProfitEngine } from '@/components/kits/ProfitEngine';
-import { AIScout } from '@/components/kits/AIScout';
-import { LaunchLabs } from '@/components/kits/LaunchLabs';
-import { MailGlyder } from '@/components/kits/MailGlyder';
-import { RepliclOne } from '@/components/kits/RepliclOne';
-import { MarketMind } from '@/components/kits/MarketMind';
-import { ContentToConversion } from '@/components/kits/ContentToConversion';
-import { BuzzShift } from '@/components/kits/BuzzShift';
-
-export type KitId =
-  | 'amplifai'
-  | 'oneshot'
-  | 'profitengine'
-  | 'aiscout'
-  | 'launchlabs'
-  | 'mailglyder'
-  | 'repliclone'
-  | 'marketmind'
-  | 'content2conversion'
-  | 'buzzshift';
+import { Navbar } from "@/components/navbar"
+import { Hero } from "@/components/hero"
+import { Services } from "@/components/services"
+import { Work } from "@/components/work"
+import { Footer } from "@/components/footer"
 
 export default function Home() {
-  const [activeKit, setActiveKit] = useState<KitId>('amplifai');
-
-  const renderKit = () => {
-    switch (activeKit) {
-      case 'amplifai':
-        return <AmplifAI />;
-      case 'oneshot':
-        return <OneShot />;
-      case 'profitengine':
-        return <ProfitEngine />;
-      case 'aiscout':
-        return <AIScout />;
-      case 'launchlabs':
-        return <LaunchLabs />;
-      case 'mailglyder':
-        return <MailGlyder />;
-      case 'repliclone':
-        return <RepliclOne />;
-      case 'marketmind':
-        return <MarketMind />;
-      case 'content2conversion':
-        return <ContentToConversion />;
-      case 'buzzshift':
-        return <BuzzShift />;
-      default:
-        return <AmplifAI />;
-    }
-  };
-
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black p-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent mb-2">
-            AI BizWay
-          </h1>
-          <p className="text-gray-400 text-lg">Use the tool. Get the result.</p>
+    <main className="min-h-screen bg-black text-white selection:bg-blue-500/30">
+      <Navbar />
+      <Hero />
+      <Services />
+      <Work />
+      
+      {/* Call to Action Section */}
+      <section id="contact" className="py-32 relative">
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
+            Ready to shape <br />
+            <span className="text-gradient">the future?</span>
+          </h2>
+          <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
+            Let's collaborate to build something extraordinary. Your vision, our expertise.
+          </p>
+          <button className="px-10 py-5 bg-white text-black rounded-full font-bold text-xl hover:scale-105 transition-transform shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
+            Start a Project
+          </button>
         </div>
-
-        {/* Kit Navigation */}
-        <KitNav activeKit={activeKit} onKitChange={setActiveKit} />
-
-        {/* Active Kit */}
-        <div className="mt-8">{renderKit()}</div>
-      </div>
+        
+        {/* Background Gradient for CTA */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-t from-blue-900/20 to-transparent pointer-events-none" />
+      </section>
+      
+      <Footer />
     </main>
-  );
+  )
 }
